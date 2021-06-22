@@ -1,0 +1,28 @@
+.custom-button {
+	-fx-min-width: 140;
+	-fx-min-height: 55;
+	-fx-font-size: 30px;
+	-fx-shape: "M 0 100 L 300 100 L 300 110 L 310 110 L 310 120 L 320 120 L 320 200 L 310 200 L 310 210 L 300 210 L 300 220 L 0 220 L 0 210 L -10 210 L -10 200 L -20 200 L -20 120 L -10 120 L -10 110 L 0 110 z";
+	-fx-background-color: transparent;
+}
+
+.custom-button:hover
+{
+    	-fx-border-style: solid outside;
+	-fx-border-color: #323232;
+	-fx-border-width: 3px; 
+    	-fx-border-insets: -2px;
+}
+
+.button {
+	-fx-background-color: transparent;
+}
+
+.buttonSave, buttonSave:hover{
+	-fx-background-color: transparent;
+	-fx-font-size: 25px;
+}
+
+.label:disabled{
+	-fx-font-size: 20px;
+}

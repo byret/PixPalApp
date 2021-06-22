@@ -1,0 +1,4 @@
+Paleta1
+4d001a,cc3333,ff9966,ffe6b3
+hrh
+994d66,ff9966,ff6666,ffe699,ffb380

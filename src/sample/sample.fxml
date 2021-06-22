@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="pane" hgap="10" styleClass="pane" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="1920.0" prefWidth="1080.0">
+         <children>
+            <Pane fx:id="canvasPane" layoutX="305" layoutY="15.0" styleClass="flowPane">
+               <children>
+                  <Canvas fx:id="canvas" onMouseDragged="#rysuj" onMousePressed="#rysuj" onMouseReleased="#addCanvas" />
+               </children>
+            </Pane>
+            <MenuButton fx:id="palette" layoutX="14.0" layoutY="130.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ffffff;">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#moreSelected" text="More..." />
+                  <MenuItem mnemonicParsing="false" onAction="#customSelected" text="Custom" />
+                  <MenuItem mnemonicParsing="false" onAction="#monoSelected" text="Monochromatic" />
+                  <MenuItem mnemonicParsing="false" onAction="#analogousSelected" text="Analogous" />
+                  <MenuItem mnemonicParsing="false" onAction="#complementarySelected" text="Complementary" />
+                  <MenuItem mnemonicParsing="false" onAction="#splitComplSelected" text="Split complementary" />
+                  <MenuItem mnemonicParsing="false" onAction="#doubleSplitComplSelected" text="Double split complementary" />
+                  <MenuItem mnemonicParsing="false" onAction="#squareSelected" text="Square" />
+                  <MenuItem mnemonicParsing="false" onAction="#rectSelected" text="Rectangle" />
+                  <MenuItem mnemonicParsing="false" onAction="#triadicSelected" text="Triadic" />
+                <MenuItem mnemonicParsing="false" onAction="#CGAselected" text="CGA" />
+                <MenuItem mnemonicParsing="false" onAction="#EGAselected" text="EGA" />
+                  <MenuItem mnemonicParsing="false" onAction="#oneBitSelected" text="1 bit" />
+                  <MenuItem mnemonicParsing="false" onAction="#twoBitsSelected" text="2 bits" />
+              </items>
+            </MenuButton>
+            <Spinner fx:id="spinner" editable="true" layoutX="15.0" layoutY="45.0" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #d2e9d4;" />
+            <FlowPane fx:id="coloursFlowPane" layoutX="160.0" layoutY="14.0" prefHeight="160.0" prefWidth="100.0" />
+            <Label layoutX="14.0" layoutY="95.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 120;" text="Palette:">
+               <font>
+                  <Font name="Lato Semibold" size="20.0" />
+               </font></Label>
+            <Label layoutX="15.0" layoutY="15.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 180;" text="Cells number:">
+               <font>
+                  <Font name="Lato Semibold" size="20.0" />
+               </font></Label>
+            <ColorPicker fx:id="colourPicker" layoutX="14.0" layoutY="155.0" onAction="#colourPicked" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ffffff;" visible="false" />
+            <Slider fx:id="sliderSaturation" layoutX="14.0" layoutY="265.0" min="10.0" prefHeight="14.0" prefWidth="100.0" value="50.0" visible="false" />
+            <Label fx:id="saturationLabel" layoutX="14.0" layoutY="235.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 150;" text="Saturation:" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Slider fx:id="sliderRinB" layoutX="14.0" layoutY="425.0" max="24.0" min="3.0" prefHeight="14.0" prefWidth="100.0" value="12.0" visible="false" />
+            <Label fx:id="RinBlabel" layoutX="14.0" layoutY="395.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent;" text="Range:" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Slider fx:id="sliderBrightness" layoutX="14.0" layoutY="345.0" min="10.0" prefHeight="14.0" prefWidth="100.0" value="15.0" visible="false" />
+            <Label fx:id="labelBrightness" layoutX="14.0" layoutY="315.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 150;" text="Brightness:" visible="false">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+             <Button alignment="CENTER" layoutX="1350.0" layoutY="235.0" mnemonicParsing="false" onAction="#clear" style="-fx-font-family: 'rainyhearts';" styleClass="custom-button" text="Clear">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button alignment="CENTER" layoutX="1350.0" layoutY="85.0" mnemonicParsing="false" onAction="#undo" style="-fx-font-family: 'rainyhearts';" styleClass="custom-button" text="Undo" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button alignment="CENTER" layoutX="1350.0" layoutY="160.0" mnemonicParsing="false" onAction="#redo" style="-fx-font-family: 'rainyhearts';" styleClass="custom-button" text="Redo" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button alignment="CENTER" layoutX="1350.0" layoutY="10.0" mnemonicParsing="false" onAction="#save" style="-fx-font-family: 'rainyhearts';" styleClass="custom-button" text="Save" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="plusButton" alignment="CENTER" layoutX="152.0" layoutY="240.0" mnemonicParsing="false" onAction="#plus" style="-fx-font-family: 'rainyhearts'; -fx-border-color: white;" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Button>
+            <Button fx:id="savePaletteButton" layoutX="14.0" layoutY="195.0" mnemonicParsing="false" onAction="#savePalette" style="-fx-font-family: 'rainyhearts';" styleClass="buttonSave" text="Save palette" textAlignment="CENTER" visible="false" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button alignment="CENTER" layoutX="1350.0" layoutY="310.0" mnemonicParsing="false" onAction="#settings" style="-fx-font-family: 'rainyhearts';" styleClass="custom-button" text="Theme...">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</GridPane>

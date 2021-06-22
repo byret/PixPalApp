@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MoreController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="600.0" prefWidth="840.0">
+         <children>
+            <TreeTableView fx:id="ttView" layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="840.0">
+              <columns>
+                <TreeTableColumn fx:id="category" prefWidth="210.0" text="Name" />
+                  <TreeTableColumn fx:id="colour1" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour2" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour3" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour4" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour5" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour6" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour7" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour8" prefWidth="70.0" />
+                  <TreeTableColumn fx:id="colour9" prefWidth="70.0" />
+              </columns>
+            </TreeTableView>
+         </children>
+      </Pane>
+   </children>
+</GridPane>

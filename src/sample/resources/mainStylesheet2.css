@@ -1,0 +1,12 @@
+.pane {
+    -fx-background-color: #dfddee;
+}
+
+.flowPane {
+    -fx-background-color: #cfcdee;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+	-fx-body-color: #efedee;
+}

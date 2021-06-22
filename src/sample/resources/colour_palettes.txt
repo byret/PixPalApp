@@ -1,0 +1,54 @@
+#Other
+1
+f4b33e','f4c36e','f4d39e','f4e3ce','f4f3fe
+2
+fde1be','edd1be','ddc1be','cdb1be','bda1be
+3
+ff9b47','ef7b47','df5b47','cf3b47','bf1b47
+4
+05464f','25464f','45464f','65464f','85464f
+5
+f9dcf6','e9dcf6','d9dcf6','c9dcf6','b9dcf6
+6
+d2fff5','d2eff5','d2dff5','d2cff5','d2bff5
+7
+fea1ff','eeb1ff','dec1ff','ced1ff','bee1ff
+8
+79b7f0','79c7f0','79d7f0','79e7f0','79f7f0
+9
+fffdee','efedee','dfddee','cfcdee','bfbdee
+10
+ffe9c8','efe9c8','dfe9c8','cfe9c8','bfe9c8
+11
+fff8e6','ffe8e6','ffd8e6','ffd8e6','ffb8e6
+12
+ffa485','efb485','dfc485','cfd485','bfe485
+13
+fdf071','fde071','fdd071','fdc071','fdb071
+#Harry Potter
+Gryffindor
+740001','ae0001','eeba30','d3a625','000000
+Hufflepuff
+ecb939','f0c75e','726255','372e29','000000
+Ravenclaw
+0e1a40','222f5b','5d5d5d','946b2d','000000
+Slytherin
+1a472a','2a623d','5d5d5d','aaaaaa','000000
+#Games
+Animal Crossing New Horizons
+9dffb0','81f1f7','fffffa','c48d3f','fff563
+Animal Crossing
+74e0aa','bee893','fbfeb2','dbbf9e','c4d9a9
+Super Mario World
+ff3939','00ce00','ffce29','00deff','007b4a
+#Films
+Pulp Fiction
+451c1f','bb1d01','efc612','202730','040507
+The Godfather
+030303','912411','a46329','c6a25a','d3cfc3
+The Shawshank Redemption
+303648','192148','bdc8f2','cdafed','675262
+Fight Club
+ec66a4','7bd34e','73823c','278b8b','d69a15
+Forrest Gump
+daf0ff','7194c5','9a835d','4f4f3b','e5e5f1
