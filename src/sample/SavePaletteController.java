@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import model.Palette;
 import model.PaletteDAO;
 import servis.Connect;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,7 +30,7 @@ public class SavePaletteController {
         if (!checkBox.isSelected()){
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter("src/sample/resources/custom_palettes.txt", true));
-                writer.append(palette.getName() + '\n' + palette.getHexes() + '\n');
+                writer.append(palette.getName()).append('\n').append(palette.getHexes()).append('\n');
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();

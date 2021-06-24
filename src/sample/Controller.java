@@ -10,7 +10,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -20,12 +24,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Palette;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Controller {
     public Canvas canvas;
@@ -87,64 +91,45 @@ public class Controller {
                 cellWidth = (int) (canvas.getWidth() / spinner.getValue()));
         sliderSaturation.valueProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    if (activePalette == "mono")
-                        mono(colourPicker.getValue().getHue()/360, newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
-                    else if (activePalette == "analog")
-                        analog(colourPicker.getValue().getHue(), newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
-                    else if (activePalette == "compl")
-                        compl(colourPicker.getValue().getHue()/360, newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
-                    else if (activePalette == "square")
-                        square(colourPicker.getValue().getHue()/360, newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
-                    else if (activePalette == "rect")
-                        rectangle(colourPicker.getValue().getHue()/360, newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
-                    else if (activePalette == "triadic")
-                        triadic(colourPicker.getValue().getHue()/360, newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
-                    else if (activePalette == "splitCompl")
-                        splitCompl(colourPicker.getValue().getHue()/360, newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
-                    else if (activePalette == "dsplitCompl")
-                        dsplitCompl(colourPicker.getValue().getHue()/360, newValue.intValue()/100.0, sliderBrightness.getValue() / 100.0);
+                    switch (activePalette) {
+                        case "mono" -> mono(colourPicker.getValue().getHue() / 360, newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                        case "analog" -> analog(colourPicker.getValue().getHue(), newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                        case "compl" -> compl(colourPicker.getValue().getHue() / 360, newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                        case "square" -> square(colourPicker.getValue().getHue() / 360, newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                        case "rect" -> rectangle(colourPicker.getValue().getHue() / 360, newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                        case "triadic" -> triadic(colourPicker.getValue().getHue() / 360, newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                        case "splitCompl" -> splitCompl(colourPicker.getValue().getHue() / 360, newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                        case "dsplitCompl" -> dsplitCompl(colourPicker.getValue().getHue() / 360, newValue.intValue() / 100.0, sliderBrightness.getValue() / 100.0);
+                    }
                 });
 
         sliderBrightness.valueProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    if (activePalette == "mono")
-                        mono(colourPicker.getValue().getHue()/360, sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
-                    else if (activePalette == "analog")
-                        analog(colourPicker.getValue().getHue(),sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
-                    else if (activePalette == "compl")
-                        compl(colourPicker.getValue().getHue()/360, sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
-                    else if (activePalette == "square")
-                        square(colourPicker.getValue().getHue()/360, sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
-                    else if (activePalette == "rect")
-                        rectangle(colourPicker.getValue().getHue()/360, sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
-                    else if (activePalette == "triadic")
-                        triadic(colourPicker.getValue().getHue()/360, sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
-                    else if (activePalette == "splitCompl")
-                        splitCompl(colourPicker.getValue().getHue()/360, sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
-                    else if (activePalette == "dsplitCompl")
-                        dsplitCompl(colourPicker.getValue().getHue()/360, sliderSaturation.getValue() / 100.0, newValue.intValue()/100.0);
+                    switch (activePalette) {
+                        case "mono" -> mono(colourPicker.getValue().getHue() / 360, sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                        case "analog" -> analog(colourPicker.getValue().getHue(), sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                        case "compl" -> compl(colourPicker.getValue().getHue() / 360, sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                        case "square" -> square(colourPicker.getValue().getHue() / 360, sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                        case "rect" -> rectangle(colourPicker.getValue().getHue() / 360, sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                        case "triadic" -> triadic(colourPicker.getValue().getHue() / 360, sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                        case "splitCompl" -> splitCompl(colourPicker.getValue().getHue() / 360, sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                        case "dsplitCompl" -> dsplitCompl(colourPicker.getValue().getHue() / 360, sliderSaturation.getValue() / 100.0, newValue.intValue() / 100.0);
+                    }
                 });
 
         sliderRinB.valueProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    if (activePalette == "mono")
-                        mono(colourPicker.getValue().getHue()/360.0, sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
-                    else if (activePalette == "analog")
-                        analog(colourPicker.getValue().getHue(), sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
-                    else if (activePalette == "compl")
-                        compl(colourPicker.getValue().getHue()/360.0, sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
-                    else if (activePalette == "square")
-                        square(colourPicker.getValue().getHue()/360.0, sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
-                    else if (activePalette == "rect")
-                        rectangle(colourPicker.getValue().getHue()/360.0, sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
-                    else if (activePalette == "triadic")
-                        triadic(colourPicker.getValue().getHue()/360.0, sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
-                    else if (activePalette == "splitCompl")
-                        splitCompl(colourPicker.getValue().getHue()/360.0, sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
-                    else if (activePalette == "dsplitCompl")
-                        dsplitCompl(colourPicker.getValue().getHue()/360.0, sliderSaturation.getValue()/100.0, colourPicker.getValue().getBrightness());
+                    switch (activePalette) {
+                        case "mono" -> mono(colourPicker.getValue().getHue() / 360.0, sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                        case "analog" -> analog(colourPicker.getValue().getHue(), sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                        case "compl" -> compl(colourPicker.getValue().getHue() / 360.0, sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                        case "square" -> square(colourPicker.getValue().getHue() / 360.0, sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                        case "rect" -> rectangle(colourPicker.getValue().getHue() / 360.0, sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                        case "triadic" -> triadic(colourPicker.getValue().getHue() / 360.0, sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                        case "splitCompl" -> splitCompl(colourPicker.getValue().getHue() / 360.0, sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                        case "dsplitCompl" -> dsplitCompl(colourPicker.getValue().getHue() / 360.0, sliderSaturation.getValue() / 100.0, colourPicker.getValue().getBrightness());
+                    }
                 });
-
         /*rangeSlider.valueProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (activePalette == "mono")
@@ -164,14 +149,14 @@ public class Controller {
         if (!coloursFlowPane.getChildren().isEmpty()) {
             double x = Math.floor(mouseEvent.getX() / cellWidth);
             double y = Math.floor(mouseEvent.getY() / cellWidth);
-            GraphicsContext gc = canvas.getGraphicsContext2D();;
+            GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.setFill(activeColour);
             gc.fillRect(x * cellWidth, y * cellWidth, cellWidth, cellWidth);
         }
     }
 
     public void CGAselected() {
-        if (activePalette != "CGA") {
+        if (!activePalette.equals("CGA")) {
             activePalette = "CGA";
             palette.setText("CGA");
             if (!coloursFlowPane.getChildren().isEmpty()) {
@@ -182,9 +167,7 @@ public class Controller {
                 Button button = new Button();
                 button.setPrefSize(width / 32, width / 32);
                 coloursFlowPane.getChildren().add(button);
-                button.setOnAction(e -> {
-                    buttonActivation(button);
-                });
+                button.setOnAction(e -> buttonActivation(button));
             }
 
             coloursFlowPane.getChildren().get(0).setStyle("-fx-background-radius: 0; -fx-background-color: #000000");
@@ -207,7 +190,7 @@ public class Controller {
     }
 
     public void EGAselected() {
-        if (activePalette != "EGA") {
+        if (!activePalette.equals("EGA")) {
             activePalette = "EGA";
             palette.setText("EGA");
             if (!coloursFlowPane.getChildren().isEmpty()) {
@@ -246,7 +229,7 @@ public class Controller {
     }
 
     public void oneBitSelected() {
-        if (activePalette != "1bit"){
+        if (!activePalette.equals("1bit")){
             activePalette = "1bit";
             palette.setText("1 bit");
             if (!coloursFlowPane.getChildren().isEmpty()) {
@@ -258,9 +241,7 @@ public class Controller {
                 button.setPrefSize(width / 16, width / 16);
 
                 coloursFlowPane.getChildren().add(button);
-                button.setOnAction(e -> {
-                    buttonActivation(button);
-                });
+                button.setOnAction(e -> buttonActivation(button));
             }
             coloursFlowPane.getChildren().get(0).setStyle("-fx-background-radius: 0; -fx-background-color: #000000");
             coloursFlowPane.getChildren().get(1).setStyle("-fx-background-radius: 0; -fx-background-color: #FFFFFF");
@@ -268,7 +249,7 @@ public class Controller {
     }
 
     public void twoBitsSelected() {
-        if (activePalette != "2bits"){
+        if (!activePalette.equals("2bits")){
             activePalette = "2bits";
             palette.setText("2 bits");
             if (!coloursFlowPane.getChildren().isEmpty()) {
@@ -279,9 +260,7 @@ public class Controller {
                 button.setPrefSize(width / 16, width / 16);
 
                 coloursFlowPane.getChildren().add(button);
-                button.setOnAction(e -> {
-                    buttonActivation(button);
-                });
+                button.setOnAction(e -> buttonActivation(button));
             }
             coloursFlowPane.getChildren().get(0).setStyle("-fx-background-radius: 0; -fx-background-color: #000000");
             coloursFlowPane.getChildren().get(1).setStyle("-fx-background-radius: 0; -fx-background-color: #676767");
@@ -291,7 +270,7 @@ public class Controller {
     }
 
     public void monoSelected() {
-        if (activePalette != "mono"){
+        if (!activePalette.equals("mono")){
             sliderRinB.setValue(9);
             sliderRinB.setMax(32);
             sliderRinB.setMin(4);
@@ -309,26 +288,18 @@ public class Controller {
         activeColour = colourPicker.getValue();
         sliderSaturation.setValue(activeColour.getSaturation() * 100);
         sliderBrightness.setValue(activeColour.getBrightness() * 100);
-        if (activePalette == "mono")
-            mono(activeColour.getHue()/360.0, activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "analog")
-            analog(activeColour.getHue(), activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "compl")
-            compl(activeColour.getHue()/360.0, activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "splitCompl")
-            splitCompl(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "dsplitCompl")
-            dsplitCompl(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "square")
-            square(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "triadic")
-            triadic(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "rect")
-            rectangle(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
-        else if (activePalette == "custom")
-            custom();
-        else
-            activeButton.setStyle(activeButton.getStyle().substring(0, 48) + FxUtils.toRGBCode(activeColour) + activeButton.getStyle().substring(55));
+        switch (activePalette) {
+            case "mono" -> mono(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
+            case "analog" -> analog(activeColour.getHue(), activeColour.getSaturation(), activeColour.getBrightness());
+            case "compl" -> compl(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
+            case "splitCompl" -> splitCompl(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
+            case "dsplitCompl" -> dsplitCompl(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
+            case "square" -> square(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
+            case "triadic" -> triadic(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
+            case "rect" -> rectangle(activeColour.getHue() / 360.0, activeColour.getSaturation(), activeColour.getBrightness());
+            case "custom" -> custom();
+            default -> activeButton.setStyle(activeButton.getStyle().substring(0, 48) + FxUtils.toRGBCode(activeColour) + activeButton.getStyle().substring(55));
+        }
     }
 
 
@@ -417,9 +388,7 @@ public class Controller {
                 button.setPrefSize(width / 64, width / 64);
 
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
             button.setStyle("-fx-background-radius: 0; -fx-background-color: " + FxUtils.HSLToRGB(hue, saturation, br / 100));
 
         }
@@ -449,7 +418,7 @@ public class Controller {
         if (activePalette != "mono"){
             setActive(false);
         }
-        if (activePalette != "analog" && activePalette != "compl")
+        if (!(activePalette.equals("analog") || activePalette.equals("compl")))
             setActive(false);
     }
 
@@ -488,9 +457,7 @@ public class Controller {
             button.setPrefSize(width / 16, width / 24);
 
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
             button.setStyle("-fx-background-radius: 0; -fx-background-color: " + FxUtils.hsvToRgb((minHue + i * range)/360.0, saturation, brightness));
         }
         setActive(true);
@@ -522,9 +489,7 @@ public class Controller {
             Button button = new Button();
             button.setPrefSize(width / 16, width / 24);
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
 
             brightness2 = brightness > .5 ? brightness - range * (i % 4) : brightness + range * (i % 4) ;
             if (i < numOfColors / 2)
@@ -562,9 +527,7 @@ public class Controller {
             Button button = new Button();
             button.setPrefSize(width / 16, width / 24);
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
 
             brightness2 = brightness > .5 ? brightness - range * (i % 4) : brightness + range * (i % 4) ;
             if (i < numOfColors / 4.0)
@@ -605,9 +568,7 @@ public class Controller {
             Button button = new Button();
             button.setPrefSize(width / 16, width / 24);
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
 
             brightness2 = brightness > .5 ? brightness - range * (i % 4) : brightness + range * (i % 4) ;
             if (i < numOfColors / 4.0)
@@ -648,9 +609,7 @@ public class Controller {
             Button button = new Button();
             button.setPrefSize(width / 16, width / 24);
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
 
             brightness2 = brightness > .5 ? brightness - range * (i % 4) : brightness + range * (i % 4) ;
             if (i < numOfColors / 3.0)
@@ -690,9 +649,7 @@ public class Controller {
             Button button = new Button();
             button.setPrefSize(width / 16, width / 24);
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
 
             brightness2 = brightness > .5 ? brightness - range * (i % 4) : brightness + range * (i % 4) ;
             if (i < numOfColors / 3.0)
@@ -732,9 +689,7 @@ public class Controller {
             Button button = new Button();
             button.setPrefSize(width / 16, width / 24);
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
 
             brightness2 = brightness > .5 ? brightness - range * (i % 4) : brightness + range * (i % 4) ;
             if (i == 0)
@@ -763,8 +718,9 @@ public class Controller {
             stage.setTitle("Palettes");
             stage.initModality(Modality.APPLICATION_MODAL);
             Scene scene = new Scene(root, 840, 600);
-            scene.getStylesheets().add(getClass().getResource("resources/stylesheet2.css").toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("resources/stylesheet2.css")).toExternalForm());
             stage.setScene(scene);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("resources/icon.png"))));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -784,9 +740,7 @@ public class Controller {
             button.setPrefSize(width / 16, width / 24);
             button.setStyle("-fx-background-radius: 0; -fx-background-color: #" + rowPalette.getHex(i));
             coloursFlowPane.getChildren().add(button);
-            button.setOnAction(e -> {
-                buttonActivation(button);
-            });
+            button.setOnAction(e -> buttonActivation(button));
         }
     }
 
@@ -911,8 +865,9 @@ public class Controller {
             stage.initModality(Modality.APPLICATION_MODAL);
             Scene scene = new Scene(root, 210, 220);
             scene.getStylesheets().add(pane.getScene().getStylesheets().get(1));
-            scene.getStylesheets().add(getClass().getResource("resources/saveStylesheet.css").toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("resources/saveStylesheet.css")).toExternalForm());
             stage.setScene(scene);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("resources/icon.png"))));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -925,7 +880,7 @@ public class Controller {
         if (stylesheetNumber > 2)
             stylesheetNumber = 0;
         pane.getScene().getStylesheets().remove(1);
-        pane.getScene().getStylesheets().add(getClass().getResource("resources/mainStylesheet" + (stylesheetNumber + 1) + ".css").toExternalForm());
+        pane.getScene().getStylesheets().add(Objects.requireNonNull(getClass().getResource("resources/mainStylesheet" + (stylesheetNumber + 1) + ".css")).toExternalForm());
     }
 }
 

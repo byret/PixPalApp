@@ -14,13 +14,9 @@
    <rowConstraints>
       <RowConstraints />
    </rowConstraints>
-   <children>
       <Pane prefHeight="1920.0" prefWidth="1080.0">
-         <children>
             <Pane fx:id="canvasPane" layoutX="305" layoutY="15.0" styleClass="flowPane">
-               <children>
                   <Canvas fx:id="canvas" onMouseDragged="#rysuj" onMousePressed="#rysuj" onMouseReleased="#addCanvas" />
-               </children>
             </Pane>
             <MenuButton fx:id="palette" layoutX="14.0" layoutY="130.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ffffff;">
               <items>
@@ -52,17 +48,17 @@
                </font></Label>
             <ColorPicker fx:id="colourPicker" layoutX="14.0" layoutY="155.0" onAction="#colourPicked" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ffffff;" visible="false" />
             <Slider fx:id="sliderSaturation" layoutX="14.0" layoutY="265.0" min="10.0" prefHeight="14.0" prefWidth="100.0" value="50.0" visible="false" />
-            <Label fx:id="saturationLabel" layoutX="14.0" layoutY="235.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 150;" text="Saturation:" visible="false">
+            <Label fx:id="saturationLabel" layoutX="14.0" layoutY="235.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 150;" styleClass="custom-label" text="Saturation:" visible="false">
                <font>
                   <Font size="20.0" />
                </font></Label>
             <Slider fx:id="sliderRinB" layoutX="14.0" layoutY="425.0" max="24.0" min="3.0" prefHeight="14.0" prefWidth="100.0" value="12.0" visible="false" />
-            <Label fx:id="RinBlabel" layoutX="14.0" layoutY="395.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent;" text="Range:" visible="false">
+            <Label fx:id="RinBlabel" layoutX="14.0" layoutY="395.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent;" styleClass="custom-label" text="Range:" visible="false">
                <font>
                   <Font size="20.0" />
                </font></Label>
             <Slider fx:id="sliderBrightness" layoutX="14.0" layoutY="345.0" min="10.0" prefHeight="14.0" prefWidth="100.0" value="15.0" visible="false" />
-            <Label fx:id="labelBrightness" layoutX="14.0" layoutY="315.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 150;" text="Brightness:" visible="false">
+            <Label fx:id="labelBrightness" layoutX="14.0" layoutY="315.0" prefHeight="17.0" prefWidth="92.0" style="-fx-font-family: 'rainyhearts'; -fx-background-color: transparent; -fx-pref-width: 150;" styleClass="custom-label" text="Brightness:" visible="false">
                <font>
                   <Font size="20.0" />
                </font></Label>
@@ -115,7 +111,5 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-         </children>
       </Pane>
-   </children>
 </GridPane>

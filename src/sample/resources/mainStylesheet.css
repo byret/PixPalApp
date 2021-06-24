@@ -16,6 +16,7 @@
 
 .button {
 	-fx-background-color: transparent;
+	-fx-font-size: 25px;
 }
 
 .buttonSave, buttonSave:hover{
@@ -23,6 +24,11 @@
 	-fx-font-size: 25px;
 }
 
-.label:disabled{
+
+.custom-label{
+	-fx-font-size: 20px;
+}
+
+.custom-label:disabled{
 	-fx-font-size: 20px;
 }
